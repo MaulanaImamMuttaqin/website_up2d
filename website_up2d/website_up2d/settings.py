@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'render',
     'rest_framework',
     'corsheaders',
-    # 'auth.apps.AuthConfig'
+    'django_filters',
+    'auth.apps.AuthConfig'
 ]
 
 MIDDLEWARE = [
@@ -139,16 +140,14 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
 ]
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_PERMISSION_CLASSES': (
-#         'rest_framework.permissions.IsAuthenticated'
-#     ),
-#     'DEFAULT_AUTHENTICATION_CLASSES': (
-#         'rest_framework_simplejwt.authentication.JWTAuthentication',
-#         'rest_framework.authentication.SessionAuthentication',
-#         'rest_framework.authentication.BasicAuthentication'
-#     ),
-# }
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
 
 # SIMPLE_JWT = {
 #     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
