@@ -100,10 +100,17 @@ class SertifikatPeserta(APIView):
 
 class AbsenceParticipant(APIView):
     permission_classes = (IsAuthenticated,)
-    def post(self, request):
-        print(request.data)
-        return Response(request.data, status=status.HTTP_200_OK )
     
+
+    def post(self, request):
+        serializer = AbsenceSerializer(data= request.data)
+        if serializer.is_valid(raise_exception=ValueError):
+            serializer.create(validated_data=request.data)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+        return Response({"data" : serializer.error_messages}, status= status.HTTP_200_OK)
+
+
     def patch(self, request):
         id, absence, list, types, start_at = itemgetter('id', 'absence', 'list', 'types', 'start_at')(request.data)
 
@@ -111,7 +118,7 @@ class AbsenceParticipant(APIView):
         data = {}
 
         if int(time()) > int(start_at) :
-            days = int((int(time()) - int(start_at))/86400)
+            days = int((int(time()+25200) - int(start_at))/86400)
             data['nth_absence'] =  days + 1
 
         if types == 1:
@@ -130,17 +137,23 @@ class AbsenceParticipant(APIView):
         return Response({"status": False}, status=status.HTTP_406_NOT_ACCEPTABLE)
     
     def get(self, request, id):
-
         absensi = AbsencePeserta.objects.get(user_id=id)
         serializer = AbsenceSerializer(absensi)
         now = datetime.now()
-        data = {
+        data = serializer.data
+        print(data)
+        data.update({
             "date" :  str(date.today().strftime("%A, %d %B %Y")),
-            "isStarted" : True,
-            "types" :  1, # 1 if 8 <= now.hour < 9  else 3 if 16 <= now.hour < 17 else 2,
-            "day_type" : ''
-        }
-        data.update(serializer.data)
+            "isStarted" : True if int(time()+25200) > int(data["start_at"]) else False,
+            "types" :  1 if 8 <= now.hour < 9  else 3 if 16 <= now.hour < 17 else 2,
+            "day_type" : '',
+            "isFinished": False if int(time()+25200) > int(data["finish_at"]) else True
+        })
+
+        if int(time()+25200) > int(data["start_at"]) :
+            days = int((int(time()+25200) - int(data["start_at"]))/86400)
+            data['nth_absence'] =  days + 1
+        print(data)
         if data['types'] == 1 :
             data["status"] = data["entrance_list"][data['nth_absence']-1]
         else :

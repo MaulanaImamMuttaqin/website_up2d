@@ -21,11 +21,11 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
 class RegisterSerializer(serializers.ModelSerializer):
     #buat memvalidasi data yang dikirim dari client ke server, udah cocok belum sama yang dibuat di bawah 
-    email = serializers.EmailField(
-            required=False,
-            validators=[UniqueValidator(queryset=User.objects.all())]
-            )
-
+    # email = serializers.EmailField(
+    #         required=False,
+    #         validators=[UniqueValidator(queryset=User.objects.all())]
+    #         )
+    username = serializers.CharField(required=True)
     password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
     password2 = serializers.CharField(write_only=True, required=True)
     #sampai sini
@@ -33,7 +33,7 @@ class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         # Fields field shows which fields from the Model class to show in your new Form.
-        fields = ('username', 'password', 'password2', 'email', 'first_name', 'last_name', 'is_admin', 'is_participant', 'is_staff')
+        fields = ('username', 'password', 'password2', 'first_name', 'last_name', 'is_admin', 'is_participant', 'is_staff')
         extra_kwargs = {
             'first_name': {'required': True},
             'last_name': {'required': True}
@@ -49,7 +49,6 @@ class RegisterSerializer(serializers.ModelSerializer):
         # data yang mau dimasukin ke database user
         user = User.objects.create(
             username=validated_data['username'],
-            email=validated_data['email'],
             first_name=validated_data['first_name'],
             last_name=validated_data['last_name'],
             is_admin=validated_data['is_admin'],

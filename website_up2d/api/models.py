@@ -19,9 +19,11 @@ class Peserta(models.Model):
 
 
 class AbsencePeserta(models.Model):
-    user = models.OneToOneField(User,null=True, on_delete=models.CASCADE)
-    entrance_list = models.CharField(max_length=50, default="0000000000000000000000000000000")
-    exit_list = models.CharField(max_length=50, default="0000000000000000000000000000000")
+    user = models.OneToOneField(User,null=True, on_delete=models.CASCADE, related_name='user')
+    peserta = models.OneToOneField(Peserta, null=True, on_delete=models.CASCADE, related_name='peserta')
+    entrance_list = models.CharField(max_length=50, default="0000000000000000000000000000000000")
+    exit_list = models.CharField(max_length=50, default="0000000000000000000000000000000000")
     isStarted =models.BooleanField(default=False)
     nth_absence = models.IntegerField(default=1)
     start_at = models.CharField(max_length=100, default='')
+    finish_at = models.CharField(max_length=100, default='')
