@@ -1,5 +1,3 @@
-from msilib.schema import File
-from re import I
 from .models import  Peserta, AbsencePeserta
 from .serializers import  PesertaSerializer, AbsenceSerializer
 from rest_framework import viewsets
