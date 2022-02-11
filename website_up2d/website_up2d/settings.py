@@ -145,7 +145,8 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:3001',
     'http://localhost:5000',
-    'http://192.168.43.239:3000'
+    'http://192.168.43.239:3000',
+    'http://192.168.43.239:5000'
 ]
 
 REST_FRAMEWORK = {
