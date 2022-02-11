@@ -16,7 +16,7 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+REACT_ADMIN_APP_DIR =  os.path.join(BASE_DIR, 'render')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -67,7 +67,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             # os.path.join(BASE_DIR, 'render/templates'),
-            os.path.join(BASE_DIR, 'auth/templates'),
+            'render/builds/admin',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -129,14 +129,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
-
+STATIC_URL = '/static/'
+STATIC_ROOT = '.static'
+STATICFILES_DIRS = [
+    'render/builds/admin/static',
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'auth/static'),
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'auth/static'),
+#     os.path.join(REACT_ADMIN_APP_DIR, 'builds/admin', 'static')
+# ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -146,7 +150,8 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3001',
     'http://localhost:5000',
     'http://192.168.43.239:3000',
-    'http://192.168.43.239:5000'
+    'http://192.168.43.239:5000',
+    'http://127.0.0.1:8000',
 ]
 
 REST_FRAMEWORK = {
@@ -157,6 +162,7 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 }
+
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=7),

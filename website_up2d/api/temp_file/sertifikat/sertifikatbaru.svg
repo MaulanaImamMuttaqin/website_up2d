@@ -5,7 +5,7 @@
 </image>
 <text font-family="Arial" font-size="19" transform="matrix(1 0 0 1 432.7856 168.6982)">Diberikan kepada :</text>
 <g height="40" transform="translate(0,205)" width="100%">
-<text alignment-baseline="middle" font-family="Arial" font-size="36" id="nama" stroke="#000" stroke-width="0" text-anchor="middle" x="50%" y="20">asdasd</text>
+<text alignment-baseline="middle" font-family="Arial" font-size="36" id="nama" stroke="#000" stroke-width="0" text-anchor="middle" x="50%" y="20">Shaquille Rizki Ramadha na</text>
 </g>
 <text transform="matrix(1 0 0 1 207.2583 279.4561)">
 <tspan font-family="Arial" font-size="16" x="0" y="0">Lembaga Pendidikan</tspan>
@@ -37,23 +37,23 @@
 		Telah melaksanakan Praktek Kerja Lapangan di PT PLN (Persero) Unit Pelaksana Pengatur Distribusi Aceh
 	</text>
 <text font-family="Arial" font-size="18" transform="matrix(1 0 0 1 231.7803 445.6865)">mulai tanggal
-		<tspan id="mulai">07 Februari</tspan>
+		<tspan id="mulai">26 Januari</tspan>
 <tspan> s/d </tspan>
-<tspan id="akhir">25 Februari 2022</tspan>
+<tspan id="akhir">28 Januari 2022</tspan>
 <tspan> dengan nilai Baik. </tspan>
 </text>
 <text transform="matrix(1 0 0 1 582.373 502.6143)">
-<tspan font-family="Arial" font-size="18" id="ttgl" x="0" y="0">asdasd, 11 Februari 2022</tspan>
+<tspan font-family="Arial" font-size="18" id="ttgl" x="0" y="0">Banda Aceh, 11 Februari 2022</tspan>
 <tspan font-family="Arial" font-size="18" x="92.566" y="21.6">Manager,</tspan>
 <tspan font-family="Arial" font-size="18" font-weight="bold" id="manager" x="63.58" y="129.6">HENDRIX REZA</tspan>
 </text>
 <rect fill="none" height="117.333" width="400" x="457" y="288"/>
 <text transform="matrix(1 0 0 1 457 279.4561)">
-<tspan font-family="Arial" font-size="16" id="instansi" x="0" y="0">asdasd</tspan>
-<tspan font-family="Arial" font-size="16" id="jurusan" x="0" y="19.2">adasd</tspan>
-<tspan font-family="Arial" font-size="16" id="npm" x="0" y="38.4">asdasd</tspan>
+<tspan font-family="Arial" font-size="16" id="instansi" x="0" y="0">Universitas Syiah Kuala</tspan>
+<tspan font-family="Arial" font-size="16" id="jurusan" x="0" y="19.2">Teknik Elektro &amp; Komputer</tspan>
+<tspan font-family="Arial" font-size="16" id="npm" x="0" y="38.4">1804105010026</tspan>
 <tspan font-family="Arial" font-size="16" id="ttl" x="0" y="57.6">Bukitinggi, 23-November-2000</tspan>
-<tspan font-family="Arial" font-size="16" id="alamat" x="0" y="76.8">asdasd</tspan>
+<tspan font-family="Arial" font-size="16" id="alamat" x="0" y="76.8">Tanjung Selamat</tspan>
 <tspan font-family="Arial" font-size="16" id="alamat2" x="0" y="96"> </tspan>
 </text>
 </svg>
