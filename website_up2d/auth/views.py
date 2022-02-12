@@ -15,6 +15,17 @@ class MyObtainTokenPairView(TokenObtainPairView):
     permission_classes = (AllowAny,)
     serializer_class = MyTokenObtainPairSerializer
 
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        print(request.data)
+        
+        try:
+            serializer.is_valid(raise_exception=True)
+        except Exception as e:
+            print(e)
+
+        return Response(serializer.validated_data, status=status.HTTP_200_OK)
+        
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     permission_classes = [IsAuthenticated]
