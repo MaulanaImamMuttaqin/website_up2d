@@ -18,13 +18,16 @@ class MyObtainTokenPairView(TokenObtainPairView):
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         print(request.data)
-        
+
         try:
-            serializer.is_valid(raise_exception=True)
+            if serializer.is_valid():
+                return Response(serializer.validated_data, status=status.HTTP_200_OK)
+            else:
+                return Response(status=status.HTTP_401_UNAUTHORIZED)
         except Exception as e:
             print(e)
 
-        return Response(serializer.validated_data, status=status.HTTP_200_OK)
+        
         
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
